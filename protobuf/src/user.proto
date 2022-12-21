@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package protoService;
+
+
+import "message/user.proto";
+import "message/error.proto";
+
+message UserByIdRequest {
+    uint32 id = 1;
+}
+
+message UserByEmailRequest {
+    string email = 1;
+}
+
+message Users {
+    repeated protoService.message.User users = 1;
+}
+
+message UsersResponse {
+    oneof response {
+        Users data = 1;
+        protoService.error.Error error = 2;
+    }
+}

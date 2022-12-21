@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package protoService;
+
+import "message/user.proto";
+import "message/error.proto";
+
+message UserRegisterRequest {
+	string name = 1;
+	string email = 2;
+	string password = 3;
+}
+
+message UserRegisterResponse { 
+	oneof body {    
+		User data = 1; 
+		protoService.error.Error error = 2;
+	}
+}
+

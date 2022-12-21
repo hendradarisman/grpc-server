@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package protobuf.protoService;
+
+import "user.proto";
+import "usersLogin.proto";
+import "userRegister.proto";
+import "src/message/user.proto";
+import "src/message/error.proto";
+
+service UserService {
+    rpc getUserById(UserByIdRequest) returns(UsersResponse) {}
+    rpc getUsersEmail(UserByEmailRequest) returns(UsersResponse) {}
+}
+
+service AuthService {
+	rpc userLogin (UserLoginRequest) returns  (UserLoginResponse) {}
+	rpc userRegister (UserRegisterRequest) returns (UserRegisterResponse) {}
+}

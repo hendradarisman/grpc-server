@@ -1,0 +1,19 @@
+rpc:
+  listen: ${RPC_SERVER}
+
+http:
+  address: 0.0.0.0:8080
+  pool:
+    num_workers: 4
+    
+grpc:
+  listen: ${GRPC_SERVER}
+  proto: "protobuf/src/protoService.proto"
+  tls:
+    key:  ${SERVER_KEY}
+    cert: ${SERVER_CERT}
+  workers:
+    command: "php worker.php"
+    pool:
+      maxJobs: ${GRPC_WORKER_MAX_JOBS}
+      numWorkers: ${GRPC_WORKER_NUM_WORKERS}
